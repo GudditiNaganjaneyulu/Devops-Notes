@@ -1,0 +1,990 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>DevOps Interview Questions</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="4ca7c797-1aff-4067-b67d-4f674e4514e5" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="DevOps%20Interview%20Questions%204ca7c7971aff4067b67d4f674e4514e5/devops.png"/></div><h1 class="page-title"><strong>DevOps Interview Questions</strong></h1></header><div class="page-body"><ul id="f8982083-26c8-4862-9cfa-6c63dc61aa84" class="toggle"><li><details open=""><summary><strong>Linux 🖥️</strong></summary><ul id="afa09f89-c26f-4866-a14c-6e28ab73ff81" class="toggle"><li><details open=""><summary>Basics</summary><ul id="87ffe936-ecb8-49f0-b91c-6da158f6ec0f" class="toggle"><li><details open=""><summary>Why Linux</summary><ul id="c7309009-a2bc-4511-ba4d-a86a4f09ce23" class="bulleted-list"><li style="list-style-type:disc">Multi-User &amp; Multi -Tasking</li></ul><ul id="62a840ea-e3d5-402e-b72f-9be922b9d5c0" class="bulleted-list"><li style="list-style-type:disc">Open Source</li></ul><ul id="1381ac88-7dc4-45be-9db1-6253baf29d54" class="bulleted-list"><li style="list-style-type:disc">Security</li></ul><ul id="0dc0ff46-31ce-4da1-b356-5f6846671d91" class="bulleted-list"><li style="list-style-type:disc">Need less resources</li></ul></details></li></ul><ul id="2e203db6-8808-4268-9c90-9c6d303db87e" class="toggle"><li><details open=""><summary>Linux Flavours</summary><ul id="4ecd5e49-34cb-472d-a724-29b8123c4066" class="bulleted-list"><li style="list-style-type:disc">RHEL (Red Hat Enterprise Linux)</li></ul><ul id="1be52cca-fc50-440d-a393-3ee01b55623f" class="bulleted-list"><li style="list-style-type:disc">CentOS</li></ul><ul id="ffc75238-c733-433a-bfed-7f8f78b437d0" class="bulleted-list"><li style="list-style-type:disc">Ubuntu</li></ul><ul id="1e3236e0-0e70-4c56-bb35-1f756ce1a138" class="bulleted-list"><li style="list-style-type:disc">Amazon Linux</li></ul><ul id="af8f63c6-8714-4746-ab46-364f921d14cd" class="bulleted-list"><li style="list-style-type:disc">Fedora</li></ul><ul id="19de0694-efd2-4972-976c-8282928e93b4" class="bulleted-list"><li style="list-style-type:disc">Linux Mint</li></ul><ul id="6c30c369-5031-4e7e-bbf8-c30fd3b83f4b" class="bulleted-list"><li style="list-style-type:disc">OpenSUSE</li></ul></details></li></ul><ul id="f446ded3-b7f1-4f2f-9502-5409cf1c1f1d" class="toggle"><li><details open=""><summary>Architecture of Lin</summary><figure id="13353b10-67c1-4179-b536-3727f4af6a4a" class="image"><a href="DevOps%20Interview%20Questions%204ca7c7971aff4067b67d4f674e4514e5/Linux-Architecture1.webp"><img src="DevOps%20Interview%20Questions%204ca7c7971aff4067b67d4f674e4514e5/Linux-Architecture1.webp"/></a></figure></details></li></ul><ul id="4107e681-a994-452b-9dcd-5113a40583b4" class="toggle"><li><details open=""><summary>File system hierarchy</summary><ul id="24ee3fd2-a88d-44d7-afd3-63af0f30bed2" class="bulleted-list"><li style="list-style-type:disc">/ - This is top level directory</li></ul><ul id="5032bcff-46ae-46cd-873a-950efd24c1bf" class="bulleted-list"><li style="list-style-type:disc">/root - It is home directory for root user</li></ul><ul id="be8d3c99-ec09-4612-959c-be261ad1a9f1" class="bulleted-list"><li style="list-style-type:disc">/home - It is home directory for other users</li></ul><ul id="9eb2d96e-ecd0-4683-bfff-fb6291aed61d" class="bulleted-list"><li style="list-style-type:disc">/boot - It contains bootable files for Linux</li></ul><ul id="89bed1e7-cd59-4409-9ce1-8549987570df" class="bulleted-list"><li style="list-style-type:disc">/etc - It contains all configuration files</li></ul><ul id="d9eaac1d-3359-455e-b459-3b73f12a09b6" class="bulleted-list"><li style="list-style-type:disc">/usr - by default softwares are installed in this directory</li></ul><ul id="27353282-9f79-470e-a1e6-847572505868" class="bulleted-list"><li style="list-style-type:disc">/bin - It contains commands used by all users</li></ul><ul id="5709ceb7-941c-4b16-80d5-3f5c84b577f2" class="bulleted-list"><li style="list-style-type:disc">/sbin - It contains commands used by only root user (root)</li></ul></details></li></ul><ul id="5cf30bad-c634-4d17-adfb-afbd136232a9" class="toggle"><li><details open=""><summary>Linux basic Commands</summary><ul id="1500a82d-2194-43a8-b9ad-ca3866902f30" class="bulleted-list"><li style="list-style-type:disc">cat (create &amp; append file)</li></ul><ul id="45a825c9-f460-42d1-837d-cdccee4da9b0" class="bulleted-list"><li style="list-style-type:disc">touch (create blank file)</li></ul><ul id="9f6ebb66-d7af-4193-9c83-30ae639aa2c9" class="bulleted-list"><li style="list-style-type:disc">nano (create &amp; edit file)</li></ul><ul id="21faa8fc-7536-4087-a923-a7916881ec75" class="bulleted-list"><li style="list-style-type:disc">vi/vim (create &amp; edit file)</li></ul><ul id="79d73175-8923-45c3-93ac-6327b8896caf" class="bulleted-list"><li style="list-style-type:disc">ls (list) (-a, -la)</li></ul><ul id="71b24a3e-ea43-4079-9ebe-938780a833f5" class="bulleted-list"><li style="list-style-type:disc">cd (change directory)</li></ul><ul id="eef8644c-e54d-4d0f-b742-1fdb9cd1effc" class="bulleted-list"><li style="list-style-type:disc">pwd (print working directory)</li></ul><ul id="adb9f00b-d9bf-47c9-bbaa-53e4809a0fe0" class="bulleted-list"><li style="list-style-type:disc">mkdir (create directory, multiple)</li></ul><ul id="f88d3363-7101-4c28-805d-2a6ca09af97d" class="bulleted-list"><li style="list-style-type:disc">cp (copy)</li></ul><ul id="4d2cb674-b258-4bde-a843-b8fdae6295d6" class="bulleted-list"><li style="list-style-type:disc">mv (move)</li></ul><ul id="2b125c78-5af1-4a7b-bb3c-c0a760dfc962" class="bulleted-list"><li style="list-style-type:disc">mv (rename)</li></ul><ul id="6c2bf3c1-30ce-4067-8adc-b45daaa58e58" class="bulleted-list"><li style="list-style-type:disc">rm (remove file)</li></ul><ul id="087fc997-555f-48db-abd9-9d467c72dc78" class="bulleted-list"><li style="list-style-type:disc">tree (see in tree structure)</li></ul><ul id="c81abca9-267c-4ae5-98b3-15df6a59d91b" class="bulleted-list"><li style="list-style-type:disc">rm -rf(remove directory &amp; recursive)</li></ul><ul id="377f4466-afa7-4343-8b04-3f9f3815d92c" class="bulleted-list"><li style="list-style-type:disc">grep (pick &amp; print)</li></ul><ul id="0f50375e-6fc7-4743-a63b-36feb412e4fc" class="bulleted-list"><li style="list-style-type:disc">less (see output)</li></ul><ul id="1230a5e6-4f72-4d1a-9539-a3c4f494068c" class="bulleted-list"><li style="list-style-type:disc">head (see top 10 lines)</li></ul><ul id="7564f51b-fcd2-494f-a360-5f54b63837a8" class="bulleted-list"><li style="list-style-type:disc">tail (see last 10 lines)</li></ul><ul id="4c7115e5-c2f0-46fa-81d6-908e03b88418" class="bulleted-list"><li style="list-style-type:disc">sort (display in Alphabetic/Numeric order)</li></ul><ul id="204429ab-c984-495b-8acb-2953979244cd" class="bulleted-list"><li style="list-style-type:disc">User</li></ul><ul id="e6a256db-9824-4259-8a91-3541f57fb146" class="bulleted-list"><li style="list-style-type:disc">Group</li></ul><ul id="058a1ff4-0b43-40b6-a930-e04f322522d3" class="bulleted-list"><li style="list-style-type:disc">Soft Link (shortcut)</li></ul><ul id="596381f8-26fe-4e3a-bf5d-b0bc6a249560" class="bulleted-list"><li style="list-style-type:disc">Hard Link (backup)</li></ul><ul id="1de5f03e-b88d-408d-b42d-4cfb3661d646" class="bulleted-list"><li style="list-style-type:disc">/tar (to pack)</li></ul><ul id="a4c13926-21f2-43fc-81a3-21fe9a0350ad" class="bulleted-list"><li style="list-style-type:disc">gz (to compress)</li></ul><ul id="3fbc358d-7e92-4330-8b13-a87d98562965" class="bulleted-list"><li style="list-style-type:disc">yum (to install)</li></ul><ul id="58848f27-8173-41aa-9a7e-7fc07df8e56e" class="bulleted-list"><li style="list-style-type:disc">wget (to download)</li></ul><ul id="b7977dd7-e275-4333-bb06-e4dc52b59264" class="bulleted-list"><li style="list-style-type:disc">File/Directory Permissions:</li></ul><ul id="706970a2-c2a5-4586-a143-12f8668e43a2" class="bulleted-list"><li style="list-style-type:disc">chmod (permissions)</li></ul><ul id="6f8cbd73-d636-49e8-9f27-7068e2212207" class="bulleted-list"><li style="list-style-type:disc">chown (owner)</li></ul><ul id="ab6dc79f-bb87-4ed2-8289-298381dfef3f" class="bulleted-list"><li style="list-style-type:disc">chgrp (group)</li></ul><ul id="78d992a3-f775-41fc-a90d-6a5f3564db5a" class="bulleted-list"><li style="list-style-type:disc">hostname (to see hostname)</li></ul><ul id="4d31996f-c066-47e9-9176-5874eab17cc1" class="bulleted-list"><li style="list-style-type:disc">ifconfig (to get ip address)</li></ul><ul id="f79466ad-45b0-494b-87c9-9dfa68d9e8a6" class="bulleted-list"><li style="list-style-type:disc">cat /etc/<em>rele</em> (to get os version)</li></ul><ul id="21b13d10-e3c2-405e-a646-d6dc4e8a5212" class="bulleted-list"><li style="list-style-type:disc">apt get install httpd (to install package)</li></ul><ul id="16a89aa4-af26-4609-a0bb-09bc9246cd21" class="bulleted-list"><li style="list-style-type:disc">yum update httpd (to upgrade package)</li></ul><ul id="7217055e-1058-4bef-af31-a690954c61da" class="bulleted-list"><li style="list-style-type:disc">yum remove httpd (to uninstall package)</li></ul><ul id="22c82a06-d105-46d4-ba76-d787c9a48340" class="bulleted-list"><li style="list-style-type:disc">yum list installed (to see installed packages)</li></ul><ul id="0fcd06f5-ad2c-4302-a0f5-4c32f69ad384" class="bulleted-list"><li style="list-style-type:disc">service httpd status (to see status)</li></ul><ul id="52704206-8db6-4601-842e-7c0dea042097" class="bulleted-list"><li style="list-style-type:disc">service httpd start (to start service)</li></ul><ul id="28bf52c7-1240-4bcd-9ee6-6968292bbc3f" class="bulleted-list"><li style="list-style-type:disc">service httpd reload (to restart service)</li></ul><ul id="fcee4da3-3e72-4344-b18a-35a66dc4ae2c" class="bulleted-list"><li style="list-style-type:disc">service httpd restart (to restart service)</li></ul><ul id="11863e79-c29a-427b-80bb-fb1c617a36f6" class="bulleted-list"><li style="list-style-type:disc">chkconfig httpd on (to start service permanently)</li></ul><ul id="a217348d-fd22-41ae-baa3-ac5c08bc7906" class="bulleted-list"><li style="list-style-type:disc">chkconfig httpd off (to stop service permanently)</li></ul><ul id="91ffb4e9-ec03-4c0b-9b74-c16c189d5541" class="bulleted-list"><li style="list-style-type:disc">Redirection (redirecting output)</li></ul><ul id="aa8acade-5e81-4004-a1d0-a2ae8c6206da" class="bulleted-list"><li style="list-style-type:disc">which (to see package installed or not)</li></ul><ul id="1d5b8a34-c035-437c-abe3-143d1354a8a9" class="bulleted-list"><li style="list-style-type:disc">sudo (to get root privileges)</li></ul><ul id="ac2024e7-72be-489f-b9b9-b2a9f18de9b5" class="bulleted-list"><li style="list-style-type:disc">whoami (to see user)</li></ul><ul id="7b901a83-b7fa-40ae-89c3-e5d1f880330d" class="bulleted-list"><li style="list-style-type:disc">find -type f (to see all files in current directory)</li></ul><ul id="7d845ea5-ac5a-4bb4-a293-492ebb37a9b1" class="bulleted-list"><li style="list-style-type:disc">find -type d (to see all directories in current directory)</li></ul><ul id="00241b9c-1c0a-441f-82e5-bcc37277d082" class="bulleted-list"><li style="list-style-type:disc">find / -type f (to see all files under top level root directory)</li></ul><ul id="1445b707-2b48-4fe2-b7f3-e57b29077984" class="bulleted-list"><li style="list-style-type:disc">find / -type d (to see all directories under top level root directory)</li></ul><ul id="b24da7b9-2a88-426a-840d-ec3e238cad5f" class="bulleted-list"><li style="list-style-type:disc">find / -type f -name &lt;file_name&gt; (to search specific file under top level root directory)</li></ul><ul id="32dcda64-fa95-4617-add9-485eb2ce483e" class="bulleted-list"><li style="list-style-type:disc">find / -type d -name &lt;dir_name&gt; (to search specific dir under top level root directory)</li></ul></details></li></ul></details></li></ul><ul id="c8628ca8-0750-42ff-8ff0-829919b1e4d0" class="toggle"><li><details open=""><summary>Advanced</summary><p id="b3cae088-1510-4907-8ee0-72ae17b84e53" class="">AWK,GREP</p><ul id="6dac26ac-873b-45fe-a517-79de1769aad9" class="bulleted-list"><li style="list-style-type:disc">netstat -a</li></ul></details></li></ul><p id="5e1f978b-7716-475f-8ec5-b8d4902a008d" class="">
+</p></details></li></ul><ul id="63f47630-7edf-4128-b79f-768daabf5e02" class="toggle"><li><details open=""><summary><strong><mark class="highlight-pink">AWS 💭</mark></strong></summary><ul id="04f71acf-3ecb-4552-8c5d-9d725036958c" class="toggle"><li><details open=""><summary>EC2 </summary><p id="a0cd3720-1ce8-4bae-9a1a-6445932d8347" class="">
+</p></details></li></ul><ul id="81d1c5da-8b1c-42d5-b9cd-75966f765217" class="toggle"><li><details open=""><summary>SQS, SNS, and SES</summary><ol type="1" id="022bde1f-477f-449a-b5aa-e694e675f103" class="numbered-list" start="1"><li>Amazon Simple Queue Service (SQS): SQS is a fully managed message queuing service that enables you to decouple and scale distributed systems. With SQS, you can send, store, and receive messages between software components without having to worry about message delivery or ensuring that the message is received and processed by the intended recipient.</li></ol><ol type="1" id="fdd64ffe-bf23-4f85-8ba6-eda5e0264da1" class="numbered-list" start="2"><li>Amazon Simple Notification Service (SNS): SNS is a fully managed pub/sub messaging service that enables you to send notifications to subscribers or other systems. With SNS, you can publish messages to topics and have those messages delivered to subscribers through a variety of protocols, including email, SMS, HTTP, and HTTPS.</li></ol><ol type="1" id="df6f2fbc-0843-4cec-b2f6-6c2e334b1504" class="numbered-list" start="3"><li>Amazon Simple Email Service (SES): SES is a scalable and cost-effective email service that enables you to send and receive email using your own email addresses and domains. SES can be used to send transactional emails, marketing emails, and other types of communications.</li></ol><p id="aa03dc1a-1f36-4828-b241-f0ddb8dfcec0" class="">In summary, SQS is a message queue service that provides reliable message delivery, SNS is a pub/sub messaging service that provides notifications to subscribers, and SES is an email service that enables sending and receiving of emails. These services can be used together or separately to build highly scalable and reliable applications on AWS.</p></details></li></ul><ul id="ad65160c-300c-44df-b35b-caf3beaf2487" class="toggle"><li><details open=""><summary></summary></details></li></ul><p id="88f5e527-be51-457c-ab81-fc28ab23371a" class="">
+</p></details></li></ul><ul id="90591f09-c771-44c5-a7c4-e995d0c1342e" class="toggle"><li><details open=""><summary><strong><mark class="highlight-orange">Git 🆚</mark></strong></summary></details></li></ul><ul id="46c57a08-22fc-48e6-9d45-3f728d6b19a5" class="toggle"><li><details open=""><summary><strong><mark class="highlight-purple">Ansible ⚙</mark></strong></summary><ul id="ea9a415b-76ef-4cea-8478-1bc762ced737" class="toggle"><li><details open=""><summary><strong>What is Ansible?</strong></summary><p id="6402a0ee-b6be-49c2-af42-9cbc2bed0b44" class="">Ansible is an opensource IT configuration management, deployment and orchestration tool. It aims to provide large productivity gains to a wide variety of automation challenges.</p><p id="45cc7397-cf25-4366-8283-b9057d4fa292" class=""><strong>Ansible History:</strong></p><ul id="0ed8ba20-db1c-4c6a-88fb-5e63d0d20c61" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-orange"><strong>Michael Dehaan</strong></mark> developed ansible and the ansible project began in February 2012.</li></ul><ul id="393eed93-f575-4afa-9d3f-dffb5063ca01" class="bulleted-list"><li style="list-style-type:disc">Redhat acquired the ansible tool in 2015.</li></ul><ul id="071f1abc-cb85-4a5d-8566-f55c16ed17f1" class="bulleted-list"><li style="list-style-type:disc">Ansible is available for RHEL, Debian, cent OS and oracle Linux.</li></ul><ul id="66a92daf-30e8-4af4-a9a4-7883ff0bdf5f" class="bulleted-list"><li style="list-style-type:disc">We can use this tool whether your servers are in on-premises or in cloud.</li></ul><figure id="a3894d8c-8c04-43f4-8a6f-6e95a69ea281" class="image"><a href="DevOps%20Interview%20Questions%204ca7c7971aff4067b67d4f674e4514e5/image.png"><img style="width:2000px" src="DevOps%20Interview%20Questions%204ca7c7971aff4067b67d4f674e4514e5/image.png"/></a></figure><ul id="849d3b46-969f-4d0c-a507-d644056d5eeb" class="bulleted-list"><li style="list-style-type:disc">It turns your code into infrastructure i.e. your computing environment has some of the same attributes as your application.</li></ul><p id="76deb1c2-229a-4de4-b886-dc75973fb08b" class="">Advantages:</p><ul id="7d5a263d-e7b1-4a27-a43e-1ab205e3025c" class="bulleted-list"><li style="list-style-type:disc">Ansible is free to use by everyone.</li></ul><ul id="a90ae4b7-75d1-4e3d-8826-8b93cb67eaf1" class="bulleted-list"><li style="list-style-type:disc">Ansible is very consistent and light weight and no constrains regarding the OS or</li></ul><ul id="3b403a18-e629-4d8a-a097-a743d17c469a" class="bulleted-list"><li style="list-style-type:disc">underlying underlying hardware </li></ul><ul id="85309424-c14b-464a-ba64-6cd21a409903" class="bulleted-list"><li style="list-style-type:disc">Is present secure due to its agentless capabilities and open SSH security features.</li></ul><ul id="48809548-3ba5-42c4-8609-c14f579341a1" class="bulleted-list"><li style="list-style-type:disc">Ansible doesn&#x27;t need any special system administrator skills to install and use it.</li></ul><ul id="010b50c3-aac9-41ea-b6ef-c23aa6dd137c" class="bulleted-list"><li style="list-style-type:disc">It is push mechanism.</li></ul><p id="88613bad-d43f-491b-8894-e2dc72dddfb0" class="">Disadvantages:</p><ul id="6acfcc54-fed2-4fcc-b744-b6f141bd0247" class="bulleted-list"><li style="list-style-type:disc">Insufficient user interface, though ansible tower is GUI, but it is still in development stage.</li></ul><ul id="af0c4151-cf5f-4e61-b680-71240131830d" class="bulleted-list"><li style="list-style-type:disc">Cannot achieve full automation by ansible.</li></ul><ul id="81a0361d-ef9f-4bc8-ba08-0abbf90466e6" class="bulleted-list"><li style="list-style-type:disc">New to the market, therefore limited support and document is available.</li></ul></details></li></ul><ul id="2dda3e2b-4b8e-4435-862a-a95bd78eb8fb" class="toggle"><li><details open=""><summary><strong>Terms used in Ansible</strong></summary><p id="8aa2079e-54d5-4d44-b4ae-9abeec7a7e74" class="">Terms used in Ansible:</p><ul id="c913bb00-49d3-4b99-b0cb-95f3e85e34ae" class="bulleted-list"><li style="list-style-type:disc"><strong>Ansible Server: </strong>the machine where ansible is installed and from which all tasks and Playbooks will be run.</li></ul><ul id="057619c0-e2b5-49a1-b6a0-a79cb7e020bd" class="bulleted-list"><li style="list-style-type:disc"><strong>Module: </strong>basically, a module is a command or set of similar commands meant to be executed</li></ul><ul id="106617a6-ea42-4063-9021-b41107dc8c56" class="bulleted-list"><li style="list-style-type:disc">on the client side.</li></ul><ul id="654aa78a-d951-4c74-91d1-d6432ee3bd25" class="bulleted-list"><li style="list-style-type:disc"><strong>Task:</strong> a task is section that consist of a single procedure to be completed.</li></ul><ul id="a94edb11-1558-4b8d-9ccb-31fae7ae6ee9" class="bulleted-list"><li style="list-style-type:disc"><strong>Role: </strong>a way of organizing tasks and related files to be later called playbook.</li></ul><ul id="39f7493c-3f5e-4d01-8aa4-67b0298d805a" class="bulleted-list"><li style="list-style-type:disc"><strong>Fact: </strong>information fetched from the client form the global variables with the gather facts</li></ul><ul id="49265d6f-719d-4548-90ce-645fc0da3fc7" class="bulleted-list"><li style="list-style-type:disc">operation.</li></ul><ul id="d565d10a-12b1-4811-971b-7493e78cc069" class="bulleted-list"><li style="list-style-type:disc"><strong>Inventory:</strong> file containing data about the ansible client servers.</li></ul><ul id="7484a60b-abe5-4a96-a856-600b600b0ce0" class="bulleted-list"><li style="list-style-type:disc"><strong>Play:</strong> execution of playbook.</li></ul><ul id="6c6b3d84-a216-4cce-9569-8c10f5b3e839" class="bulleted-list"><li style="list-style-type:disc"><strong>Handler:</strong> task which is called only if notifier is present.</li></ul><ul id="86487ee6-e054-4b81-a3f2-c186402a6046" class="bulleted-list"><li style="list-style-type:disc"><strong>Notifier:</strong> section attributed to a task which calls a handler if the output is changed.</li></ul><ul id="0293003f-a728-4c63-9863-84681decb444" class="bulleted-list"><li style="list-style-type:disc"><strong>Playbooks:</strong> it consists code in YAML format which describes tasks to be executed.</li></ul><ul id="2a4d0fcc-9322-4f02-b728-3c7d53554ee4" class="bulleted-list"><li style="list-style-type:disc"><strong>Host:</strong> nodes which are automated by ansible.</li></ul></details></li></ul><ul id="697ce581-c0f3-402c-b84b-82d118717633" class="toggle"><li><details open=""><summary><strong>Installation</strong></summary><p id="1d94dea9-cafd-4970-9591-94aed58f1d12" class="">Installation:</p><p id="45b0dc64-1a96-4cd4-8760-18f7e601071f" class="">Fallow link you can install based on the distribution you can install using below link</p><p id="871435a0-51b3-4013-b56a-76cdb71dd6e2" class="">https://docs.ansible.com/ansible/latest/installation_guide/installation_distros.html</p></details></li></ul><ul id="46bd0e8b-6d1f-4aae-b3b8-89792a3b8527" class="toggle"><li><details open=""><summary><strong>Ad-hoc Commands</strong></summary><ol type="1" id="20c14134-b210-4936-8328-abe2f04942a7" class="numbered-list" start="1"><li>Ad-hoc commands are commands which can be run individually to perform quick functions.</li></ol><ol type="1" id="9ec118e5-b239-40bc-86f7-6211625bbb8a" class="numbered-list" start="2"><li>These ad-hoc commands are not used for configuration management and deployment, because these commands are of one-time usage.</li></ol><ol type="1" id="a582b9e7-a799-49e7-893d-cc0659b5f505" class="numbered-list" start="3"><li>The ansible ad-hoc commands uses the /usr/bin/ansible command line tool to automate a single task.</li></ol><p id="717d0d53-c111-457e-b46f-0d0fdfd1fbe6" class="">https://docs.ansible.com/ansible/latest/user_guide/intro_adhoc.html</p><p id="42677310-12f4-44f6-8d4c-9d3975392d5e" class=""><strong>Syntax:</strong></p><pre id="55bd99ba-7c77-4a65-be16-6d185b153a94" class="code code-wrap"><code>ansible [-i INVENTORY] [server] [-m MODULE] {-a MODULE_OPTIONS}</code></pre><pre id="89b926e8-2669-4c7a-a9c0-eee811b259ec" class="code code-wrap"><code>root@ip-172-31-23-165:/home/ubuntu# ansible all -m ping
+localhost | SUCCESS =&gt; {
+    &quot;ansible_facts&quot;: {
+        &quot;discovered_interpreter_python&quot;: &quot;/usr/bin/python3&quot;
+    },
+    &quot;changed&quot;: false,
+    &quot;ping&quot;: &quot;pong&quot;
+}
+root@ip-172-31-23-165:/home/ubuntu# ansible all -a &quot;mkdir a&quot; -b
+localhost | CHANGED | rc=0 &gt;&gt;
+
+root@ip-172-31-23-165:/home/ubuntu# ansible all -a &quot;ls -ltr &quot; -b
+localhost | CHANGED | rc=0 &gt;&gt;
+total 16
+-rw-r--r-- 1 root   root      0 Nov 17 06:33 ansible.cfg
+-rw-r--r-- 1 root   root     36 Nov 17 06:35 hosts
+-rwxr-xr-x 1 ubuntu ubuntu  587 Nov 17 10:47 docker.sh
+drwxr-xr-x 5 root   root   4096 Nov 17 11:35 MyResumeDocker
+drwxr-xr-x 2 root   root   4096 Nov 17 12:41 a</code></pre><p id="bb717953-9d04-403d-b680-5452a5a4ff3c" class="">
+</p><p id="788411da-73b5-4fd5-a9db-db4bf0174db9" class="">
+</p></details></li></ul><ul id="f2cae0bf-24d4-4a01-a80a-d600e332083d" class="toggle"><li><details open=""><summary><strong>Modules</strong></summary><p id="7c81eeb3-71d0-46f3-8a25-528699193cb4" class="">Ansible ships with a number of modules (called module library) that can be executed directly on remote hosts or through &quot;playbooks&quot;. Your library of modules can reside on any machine and there are no servers, daemons or databases required.</p><pre id="33f95d2a-921d-4228-98e1-f47ef6f9557a" class="code"><code>Eg:
+
+- name: Install Apache2 package
+  apt:
+    name: apache2
+    state: present
+-----------------------------------------------------------------------------------------
+- name: Create directory
+  file:
+    path: /tmp/test
+    state: directory
+
+-----------------------------------------------------------------------------------------
+- name: Copy index.html file
+  copy:
+    src: index.html
+    dest: /var/www/html/
+-----------------------------------------------------------------------------------------
+- name: Create user
+  user:
+    name: jdoe
+    home: /home/jdoe</code></pre><p id="0c03206d-e751-46db-9a88-d07bf78ac1b4" class=""><mark class="highlight-pink"><strong>Q. where ansible modules are stored? The default location of the inventory file is /etc/ansible/hosts.</strong></mark></p><pre id="006cd3b0-f374-4b3d-b011-4361d731e577" class="code code-wrap"><code> ##Below module used to check ansible slave status while pinging
+root@ip-172-31-23-165:/home/ubuntu# ansible all -m ping
+localhost | SUCCESS =&gt; {
+    &quot;ansible_facts&quot;: {
+        &quot;discovered_interpreter_python&quot;: &quot;/usr/bin/python3&quot;
+    },
+    &quot;changed&quot;: false,
+    &quot;ping&quot;: &quot;pong&quot;
+}</code></pre><pre id="89f15cb2-27ee-4b6b-87c7-7359d5667a7a" class="code code-wrap"><code>
+root@ip-172-31-23-165:/home/ubuntu#  ansible all -m shell -a uptime
+localhost | CHANGED | rc=0 &gt;&gt;
+ 12:25:45 up 1 min,  2 users,  load average: 0.43, 0.26, 0.10
+root@ip-172-31-23-165:/home/ubuntu# ansible all -m shell -a &quot;free -m&quot;
+localhost | CHANGED | rc=0 &gt;&gt;
+               total        used        free      shared  buff/cache   available
+Mem:             966         261         309           1         395         550
+Swap:              0           0           0
+
+</code></pre><pre id="f8db961f-e509-42c8-9ee9-5c82ad5e785c" class="code code-wrap"><code>root@ip-172-31-23-165:/home/ubuntu# ansible all -m apt -a &quot;name=apache2 state=present&quot; -b
+localhost | SUCCESS =&gt; {
+    &quot;ansible_facts&quot;: {
+        &quot;discovered_interpreter_python&quot;: &quot;/usr/bin/python3&quot;
+    },
+    &quot;cache_update_time&quot;: 1668682184,
+    &quot;cache_updated&quot;: false,
+    &quot;changed&quot;: false
+}</code></pre></details></li></ul><ul id="0a8c5e55-3faf-4c2a-8625-64bd60e56ddb" class="toggle"><li><details open=""><summary><strong>Playbook</strong></summary><p id="0f6f9b22-8d7f-4012-b9a7-b3fe349c161e" class="">Playbooks in ansible are written in YAML format. It is human readable data serialization language and is commonly used for configuration files. Playbook is like a file where you write codes consists of variables, tasks, handlers, files, templates and roles. Each playbook is composed of one or more &#x27;modules&#x27; in a list. Module is a collections of configuration files.</p><p id="d4a82cca-566f-4ef3-8ff9-5fefee5c6b38" class="">Playbooks are divided into many sectors like</p><p id="c2210c0b-cca5-4b03-8985-5d50cefb9d05" class="">a. Target section: defines the host against which playbooks task has to be executed.b. Variable: define variablesc. Task section: list of modules that we need to run in an order.</p><p id="c1b7d2d7-2e50-4cdd-80ca-6ab06eb71c59" class="">YAML (Yet Another Markup Language): For ansible nearly every YAML files starts with a list. Each item in the list is a list of key-value pairs commonly called as a directory. All YAML files have to begins with &quot;---&quot; and ends with &quot;. All members ofa list lines must begin with same indentation level starting with -</p><pre id="00fc023d-0f5c-4532-aa64-4483ee9a4490" class="code"><code>For e.g:
+
+ --- # a list of fruits
+Fruits:
+   Mango
+   Strawberry
+   Banana
+   Grapes
+   Apple</code></pre><pre id="ea0ff7cf-2b5f-490b-9f45-ed43823c39e2" class="code"><code>sample playbook that will install nginx and visualize resume 
+---
+- hosts: all
+  #user: root
+  become: yes
+  gather_facts: yes
+  connection: ssh
+
+  tasks:
+    - name: installation apache2
+      apt: pkg=apache2 state=present
+    - name: version check
+      apt: pkg=apache2 state=latest
+    - name: clone the git directory
+      ansible.builtin.command: git clone https://github.com/GudditiNaganjaneyulu/MyResume.git
+    - name: copy files to workdir
+      copy: src=/root/ansible/MyResume/  dest=&#x27;{{workdir}}&#x27;
+    - name: remove Html code after copying
+      ansible.builtin.command: rm -rf /root/ansible/MyResume/
+      notify: service starting
+    - name: service starting
+      service: name=apache2 state=restarted</code></pre></details></li></ul><ul id="97c7f626-1d3c-419e-b3eb-9f9c3137f09a" class="toggle"><li><details open=""><summary><strong>Variable</strong></summary><p id="86d1dd91-8721-494f-b66a-b11da0cc218d" class="">
+Ansible uses variables which are defined previously to enable more flexibility in playbooks
+and roles. They can be used to loop through a set of given values, access various information like the host name of a system and replace certain strings in templates with specific values.
+Put variable section above tasks so that we define it first and use it later.</p><pre id="77929c7b-f559-4971-9a8e-75de41ec09a5" class="code"><code>---
+- hosts: all
+  #user: root
+  become: yes
+  gather_facts: yes
+  connection: ssh
+##variable declared below ##
+  vars:
+    workdir: /var/www/html/
+  tasks:
+    - name: installation apache2
+      apt: pkg=apache2 state=present
+
+    - name: version check
+      apt: pkg=apache2 state=latest
+    - name: clone the git directory
+      ansible.builtin.command: git clone https://github.com/GudditiNaganjaneyulu/MyResume.git
+    - name: copy files to workdir
+      copy: src=/root/ansible/MyResume/  dest=&#x27;{{workdir}}&#x27;
+    - name: remove Html code after copying
+      ansible.builtin.command: rm -rf /root/ansible/MyResume/
+      notify: service starting
+    - name: service starting
+      service: name=apache2 state=restarted</code></pre></details></li></ul><ul id="135eda64-dab0-446e-bed5-690287e426c6" class="toggle"><li><details open=""><summary><strong>Handlers </strong></summary><p id="a9ba4aa8-dee2-498e-a43b-b4333b9966b5" class="">A handler is exactly the same as a task, but it will run when called by another task.
+Or
+Handlers are just like regular tasks in an ansible playbook, but are only run if the task contains a &#x27;notify&#x27; directive and also indicates that it changed something.</p><pre id="4889549e-460d-499f-b50c-e8b49d4eda38" class="code"><code>---
+- hosts: all
+  #user: root
+  become: yes
+  gather_facts: yes
+  connection: ssh
+  vars:
+    workdir: /var/www/html/
+  tasks:
+    - name: installation apache2
+      apt: pkg=apache2 state=present
+
+    - name: version check
+      apt: pkg=apache2 state=latest
+    - name: clone the git directory
+      ansible.builtin.command: git clone https://github.com/GudditiNaganjaneyulu/MyResume.git
+    - name: copy files to workdir
+      copy: src=/root/ansible/MyResume/  dest=&#x27;{{workdir}}&#x27;
+    - name: remove Html code after copying
+      ansible.builtin.command: rm -rf /root/ansible/MyResume/
+      notify: service starting
+  handlers:
+
+    - name: service starting
+      service: name=apache2 state=restarted</code></pre></details></li></ul><ul id="ec7452b6-d473-4f7d-97e4-4ddd6a236b6e" class="toggle"><li><details open=""><summary><strong>Dry Run</strong></summary><p id="9e01e154-e98a-4cca-8f0a-5a17d1242ad6" class="">Check whether the playbook is formatted correctly or not.
+<strong>Anible-playbook handlers.yml --check</strong></p></details></li></ul><ul id="9fffc9c4-ef47-4c2e-9f70-696855578b5b" class="toggle"><li><details open=""><summary><strong>Loops</strong></summary><p id="422f00ef-2594-49ae-8a7a-547d782bd66b" class="">Sometimes you want to repeat a task multiple time. In computer programming this is called as loops.
+Common ansible loops include changing ownership on several files and/or directories with the file module, creating multiple users with the user module and repeating a polling step until certain result is reached.</p><pre id="c38c7935-d9aa-46d2-b936-563f74cd2af7" class="code"><code>---
+- hosts: all
+  #user: root
+  become: yes
+  gather_facts: yes
+  connection: ssh
+  
+  tasks:
+    - name: creation of users
+    - user: name=“{{item}}” state=present
+       with item:
+         - mini
+         - sana
+         - ravi</code></pre></details></li></ul><ul id="241ca1f5-2334-4806-acab-22e17f561aa6" class="toggle"><li><details open=""><summary><strong>Conditions</strong></summary><p id="d06bd423-64d2-4113-bb07-7dc083280b1f" class="">Whenever we have different different scenarios, we put conditions to the scenario. We put conditions in ansible by &quot;when&quot; statement.</p><pre id="e4c368f3-f267-42dd-902d-381726e8d356" class="code"><code>---
+- hosts: all
+  become: yes
+  gather_facts: yes
+  connection: ssh
+  tasks:
+    - name: install nginx if family is debian
+      command: apt install nginx -y
+      when: ansible_os_family == &quot;Debian&quot;
+      name: install nginx if family is Redhat
+      command: yum install nginx -y
+      when: ansible_os_family == &quot;Redhat&quot;</code></pre></details></li></ul><ul id="6e4d66e0-8892-460b-a81e-ebd9a4a472e4" class="toggle"><li><details open=""><summary><strong>Vault</strong></summary><p id="a2bf6c29-c747-46ae-bddb-06833c723405" class="">Ansible allows keeping sensitive data such as passwords or key in encrypted files, rather that a plaintext in your playbooks.</p><figure id="307adb20-4666-4532-a390-7bbbb177c279" class="image"><a href="https://blogger.googleusercontent.com/img/a/AVvXsEjgHxWXyywWs-YHGVgpYTBV9GdQQZnROB9Ik2kGOssTvyqJu4Gi3qVpTtpxgF1i0OkN6ZIjy-guXQg7Ax2L3IUmry3wj3fqdEqBT44k6Rnsc8ZSgg9bczDumPoxLCqedoBsZbVzIGKUX2Ndzh5kJve9KhXlGN0aNRSmAidzH6bTPc0guM9ipHxx_Twy"><img src="https://blogger.googleusercontent.com/img/a/AVvXsEjgHxWXyywWs-YHGVgpYTBV9GdQQZnROB9Ik2kGOssTvyqJu4Gi3qVpTtpxgF1i0OkN6ZIjy-guXQg7Ax2L3IUmry3wj3fqdEqBT44k6Rnsc8ZSgg9bczDumPoxLCqedoBsZbVzIGKUX2Ndzh5kJve9KhXlGN0aNRSmAidzH6bTPc0guM9ipHxx_Twy"/></a></figure><p id="1b8a1a5c-3662-4cc7-a5d8-d64f58f2aca0" class="">Creating a new encrypted playbook:</p><p id="1941f0ee-5d41-4878-b2c1-06c908412078" class=""><strong>$ ansible-vault create vault.yml</strong></p><p id="5bd0fbf3-7ac1-4e30-bbc4-4f3d9902857f" class="">Edit the encrypted playbook:</p><p id="cd0a0a17-0387-4a2b-a28b-125213974cc8" class=""><strong>$ ansible-vault edit vault.yml</strong></p><p id="7527fa18-2f4e-423e-8dcc-4f7b357bcba0" class="">To change the password:</p><p id="70582f18-16c6-4147-8f71-8305213367e7" class=""><strong>$ ansible-vault rekey vault.yml</strong></p><p id="b26a17cf-c7d1-4392-a605-a65e15fa4cd4" class="">To encrypt on existing playbook:</p><pre id="2908992d-92e6-46bf-843a-e09fe4885c69" class="code"><code>root@ip-172-31-23-165:~/ansible# ansible-vault encrypt playbook.yml
+New Vault password:
+Confirm New Vault password:
+Encryption successful
+
+root@ip-172-31-23-165:~/ansible# cat playbook.yml
+$ANSIBLE_VAULT;1.1;AES256
+32623235343734643566343131386338376430376162356466326662616434376234353463666638
+3834326466393037373463623661313864643731653461380a353363323033353538313364376664
+34643735393164653237333032663134643135396632326365636633366337346661333765646535
+3035646465323335320a336436336530623963313066623930623962386130643234363466636631
+30666261633531623035363164303737343834626332336665386665646332623266353137616130
+61363938303363326563336661636138353336346339343364336130393639353339303436643665
+33616233663532323039333237323930653031653062613065643633623063663138333161393338
+39663561663637663933323833383561363861306130313534373137333130643435626233363831
+65333239343635316638323364376533313631363337353464303662363166336164336130303033
+66363464363339653636313738333433356630666336326231333631326431333562333439373264
+62623335303930303736343332303039646336386463646634633136656464363432633962653661
+64363762313937653334306639356664646130613131323835316532396632313036313438323139
+35353434646531666636656438323635666230616233333839616436363463373561333531396635
+33366464363563623938663734646530316564663866376530623566643066656135323265376134
+66333865343237323037623939306262343235336132373539383765326261636164386664616531
+65383232353938363561646138313931356230366564653036373466393566386265643364393836
+63336164353635663938303237343634643730346565386663643236666431656539306339363663
+66643433613161666136343934326238666332303062306564393234343265323263326535323832
+66653034373862666639643464623163373965396564663964616138613862356533643832346665
+63663563613533303337613862656230323235303161383537653561643237663763386134633166
+36343337353537623035613839303432333165663662646638663466303935373230643737663139
+61636663653662363934343862636538333037386561323734633962386231366636316333303535
+35303937626164373139656463363136336463656132636363323463626539643934633233626561
+63623865396532373266646634626631326632643939333664643031663164656133366430323966
+39326338613464653633626534333065323633313064366664663434623631316663393964323864
+61376237316163626631666638626533303062633833303163333532356531653430316436613433
+64316262623837383730653066333931373934383531336264636532336136333962613836346334
+66303062393633396363613233333638326632306265643838613066303933663339613937353261
+38323162313632666163393535373130663963323864653262313834323034623839313934303462
+63393732306237333237333835393238326134396164376136303064613334656464636239303031
+65343830633038653730623162306639346365313935333030626430333034623839336463396165
+66633762316336616133356461646562656662313634323732343665366136333361666263633034
+30393662613833336135623362636437646336363935323837386263396634306630306230656637
+38366365623831636562346238663736653539306662323930373162343539623864383439626136
+33646333633430386330626638326265323735343662303964613134633964626263333839656630
+30633734646438363934386461626133623733613766336261633236313764366565313332326361
+38373239333236363530386565343935633133363635663431316265613463633137306263623764
+66373132376631663465613266383834396564376136386135653766356530656161383263623763
+33393062663532326435643663333562633134316636626236313466366331666662346131663330
+32306466383133623134363438323335316431326137303635313065393163626232643465376564
+3435
+
+To decrypt an encrypted playbook:
+
+root@ip-172-31-23-165:~/ansible# ansible-vault decrypt playbook.yml
+Vault password:
+Decryption successful</code></pre></details></li></ul><ul id="d718e3db-7d60-4d25-8629-d34868a81270" class="toggle"><li><details open=""><summary><strong>Roles</strong></summary><ul id="c951f4a9-0f18-46e3-8b78-a41efcce7c5a" class="bulleted-list"><li style="list-style-type:disc">We can use two techniques for reusing a set of tasks: includes and role.</li></ul><ul id="51e53402-a8fc-4135-ba5b-f35bcf68d73d" class="bulleted-list"><li style="list-style-type:disc">Roles are good for organizing tasks and encapsulating data needed to accomplish those tasks.</li></ul><ul id="53b2a2de-2426-4faa-9269-82f405b4e14c" class="bulleted-list"><li style="list-style-type:disc">We can organize playbook into a directory structure called roles.</li></ul><ul id="42449dda-8997-4642-b386-5ed2fb210a8e" class="bulleted-list"><li style="list-style-type:disc">Adding more and more functionality to the playbooks will make it difficult to maintain in a single file.</li></ul><p id="c56636b8-5344-40a6-90f9-f477cfcbdabb" class="">Ansible Roles:</p><ul id="1bcb1c3c-f0d3-4e0d-81a2-2b5c7535fa78" class="bulleted-list"><li style="list-style-type:disc">Default: it stores the data about role/ application. Default variables e.g: if you want to run</li></ul><ul id="c2ebcdc2-1e6a-4156-b30e-393058f8dfc7" class="bulleted-list"><li style="list-style-type:disc">to port 80 or 8080 then variables need to define in this path.</li></ul><ul id="2046afdb-13c0-4104-9d6e-6c3e4eaa2771" class="bulleted-list"><li style="list-style-type:disc">Files: it contains files need to be transferred to the remote VM (static files).</li></ul><ul id="e3dd3888-08bc-4fe2-8017-eff9b7998116" class="bulleted-list"><li style="list-style-type:disc">Handles: they are triggers or task. We can segregate all the handlers required in playbook.</li></ul><ul id="c8618405-726c-4785-ab98-de88ae3d3932" class="bulleted-list"><li style="list-style-type:disc">Meta: this directory contains files that establish roles dependencies. E.g: author name,</li></ul><ul id="53d657e3-098c-40ce-a4d3-355373752e62" class="bulleted-list"><li style="list-style-type:disc">supported platform, dependencies if any.</li></ul><ul id="a49f179f-9c62-45d5-bc03-b3f81d17e2d1" class="bulleted-list"><li style="list-style-type:disc">Tasks: it contains all the tasks that is normally in the playbook. E.g: installing packages and copies files etc.</li></ul><ul id="05b97607-bd80-4edb-937a-9fef86c4e5c6" class="bulleted-list"><li style="list-style-type:disc">Vars: variables for the role can be specified in this directory used in your configuration</li></ul><ul id="3425ce9a-13c6-40ce-9599-aa9b9f36bbc7" class="bulleted-list"><li style="list-style-type:disc">files. Both vars and default stores variables.</li></ul><p id="3ffee4b6-6e08-455c-b1fa-16f4b8cc7ba8" class="">Make directory like below structure</p><pre id="4756a2e3-9144-44b9-b114-dfa68ba48951" class="code"><code>**├── playbook**
+
+**│   └── roles**
+
+**│       └── webservers**
+
+**│           └── tasks**
+
+</code></pre><pre id="592afeec-486e-4ea2-ae6a-f1ea86bf7d3d" class="code"><code>root@ip-172-31-23-165:~/ansible/playbook# tree
+.
+├── master.yml (master file configurations it holds)
+└── roles
+    └── webservers
+        └── tasks
+            └── main.yml  ( holds tasks)
+
+
+
+
+root@ip-172-31-23-165:~/ansible/playbook# ll
+total 28
+drwxr-xr-x 3 root root  4096 Nov 18 08:10 ./
+drwxr-xr-x 3 root root  4096 Nov 18 08:03 ../
+-rw------- 1 root root 12288 Nov 18 08:08 .master.yml.swp
+-rw-r--r-- 1 root root    95 Nov 18 08:10 master.yml
+drwxr-xr-x 3 root root  4096 Nov 18 08:03 roles/
+
+root@ip-172-31-23-165:~/ansible/playbook# cat master.yml
+---
+- hosts: all
+  become: yes
+  gather_facts: yes
+  connection: ssh
+  roles:
+    - webservers
+
+# it holds master permission to execute the task binded to roles
+
+root@ip-172-31-23-165:~/ansible/playbook# tree
+.
+├── master.yml
+└── roles
+    └── webservers
+        └── tasks
+            └── main.yml
+
+3 directories, 2 files
+
+root@ip-172-31-23-165:~/ansible/playbook# cat roles/webservers/tasks/main.yml
+- name: install apache2
+  apt: name=nginx state=present
+- name: start apache2
+  service: name=nginx state=started
+
+# it holds tasks which need to execute 
+
+
+Execute the above playbook will get same like response 
+
+root@ip-172-31-23-165:~/ansible/playbook# ansible-playbook master.yml
+
+PLAY [all] *********************************************************************************************************************************************
+
+TASK [Gathering Facts] *********************************************************************************************************************************
+ok: [localhost]
+
+TASK [webservers : install apache2] ********************************************************************************************************************
+ok: [localhost]
+
+TASK [webservers : start apache2] **********************************************************************************************************************
+ok: [localhost]
+
+PLAY RECAP *********************************************************************************************************************************************
+localhost                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+root@ip-172-31-23-165:~/ansible/playbook#</code></pre><p id="53bf3e44-683a-43eb-a4d0-58d008e7b79a" class="">
+</p></details></li></ul><ul id="8b013959-1e1e-4730-9536-f9a67b4f1134" class="toggle"><li><details open=""><summary><strong>Questions</strong></summary><p id="6cd4b0b5-d153-4b15-ac6f-a10e8a810127" class=""><strong>What is Ansible? How do you define it? What is its use in DevOps?</strong></p><p id="cba979f6-3752-436b-828d-7a0f104a7c86" class="">Ansible is an open-source automation tool that enables developers to automate IT infrastructure provisioning, configuration management, application deployment, and orchestration. It is a popular tool used in DevOps to automate the software development process. Ansible provides an easy-to-use platform that integrates with many other tools to enable Continuous Integration (CI) and Continuous Delivery (CD) processes.</p><p id="4fb90b8b-b0ec-4cf2-bfab-bd2d0ec385a5" class=""><strong>What is a playbook in Ansible? How does it work?</strong></p><p id="62a35987-e091-4da2-ba26-41391cc2651f" class="">A playbook is a script written in YAML format that defines the desired state of a system. It contains a series of tasks that are executed in order to achieve the desired state. Playbooks are the main way of describing automation in Ansible, and they can be used to perform a wide range of tasks, including server configuration, application deployment, and infrastructure provisioning.</p><p id="0a551b2d-335d-4c0c-a86d-5552b2264e85" class=""><strong>Explain the difference between an Ansible playbook and an Ansible role.</strong></p><p id="49d20fda-a865-4365-bea8-d77f83df059c" class="">An Ansible playbook is a script that defines a series of tasks to be executed on one or more systems. It is a self-contained file that contains all the information needed to execute the tasks. A playbook can include one or more roles.</p><p id="5a64aac5-bb83-41d9-827f-d30ab006f3bd" class="">An Ansible role, on the other hand, is a collection of tasks, files, templates, and variables that are organized in a structured way to perform a specific function. A role can be reused across multiple playbooks, and it provides a modular way to organize automation tasks.</p><p id="6505befe-9322-413e-8812-74761718191d" class=""><strong>How do you handle sensitive information in Ansible, such as passwords and credentials?</strong></p><p id="0971ae63-5019-465c-8389-fd683a88a991" class="">Sensitive information such as passwords and credentials should not be stored in plaintext in Ansible playbooks or roles. Ansible provides several ways to handle sensitive information, including using Ansible Vault to encrypt sensitive data, storing sensitive information in environment variables, or using external credential stores.</p><p id="3452f6aa-150f-4ff9-9f1a-26c160dceaf8" class=""><strong>How does Ansible differ from other configuration management tools like Puppet and Chef?</strong></p><p id="3142b0ea-0c74-45ca-a542-9ea4077fc466" class="">Ansible differs from other configuration management tools like Puppet and Chef in several ways. Ansible uses a simple YAML-based syntax, whereas Puppet and Chef use their own domain-specific languages. Ansible also has a lightweight agentless architecture, which means that it does not require any software to be installed on the target system. Finally, Ansible has a strong focus on orchestration and automation, whereas Puppet and Chef are more focused on configuration management.</p><p id="e6ee9244-1d6f-42e6-81d3-219c163e41cb" class=""><strong>How do you manage large-scale deployments with Ansible?</strong></p><p id="eef8bf45-d6a8-4f68-90cf-b4c5f4e2f9ef" class="">To manage large-scale deployments with Ansible, it is recommended to use a combination of dynamic inventory, parallel execution, and modular playbooks. Dynamic inventory enables Ansible to automatically discover and manage hosts in large-scale environments. Parallel execution enables Ansible to execute tasks on multiple hosts simultaneously, which reduces the time required to complete a deployment. Modular playbooks enable Ansible to organize tasks in a structured and reusable way.</p><p id="821c7688-6bfc-4638-ae38-aca690261564" class=""><strong>What is the Ansible Galaxy? How does it work?</strong></p><p id="1ecf47b2-3642-4328-814d-1b1d05955ca7" class="">Ansible Galaxy is a repository of Ansible roles and collections that can be used to automate common tasks. It provides a centralized location for sharing and discovering roles, which enables developers to reuse existing automation code. Ansible Galaxy works by providing a command-line tool that enables developers to search for and install roles from the repository.</p><p id="df631150-d1f3-4a49-b154-67b12cef312a" class=""><strong>How do you troubleshoot issues in Ansible playbooks?</strong></p><p id="be6b335b-540a-422a-928a-e1d5866040bf" class="">To troubleshoot issues in Ansible playbooks, it is recommended to use the verbose and debug modes, which provide additional information about the tasks being executed. Ansible also provides a feature called Ansible-pull, which enables developers to run Ansible playbooks on the target system and collect debugging information locally.</p><p id="119171a7-a7d0-43ad-a5ec-67ce23676c84" class=""><strong>What are the best practices for writing Ansible playbooks and roles?</strong></p><p id="5afe82c4-cc6c-4ae1-966d-61510b518a9f" class="">The best practices for writing Ansible playbooks and roles include using YAML syntax, keeping playbooks and roles modular and reusable</p></details></li></ul></details></li></ul><ul id="8a7e7ec8-b31f-4c9d-a8ed-36c4060d944c" class="toggle"><li><details open=""><summary><strong>Jenkins or Circle CI ♾</strong></summary><ul id="bd88d467-0344-4636-8f6e-0fd538669a60" class="toggle"><li><details open=""><summary>Jenkins</summary><ul id="c34288d5-9ebf-434d-8b68-3bdec591d339" class="toggle"><li><details open=""><summary>What is Jenkins? How do you define it? What is its use in DevOps?</summary><p id="00503b59-334c-4795-abac-a048b460a9c6" class="">Jenkins is an open-source automation tool that is widely used in DevOps for Continuous Integration (CI) and Continuous Deployment (CD). It helps to automate the build, test, and deployment processes of software projects. Jenkins is highly customizable and can be easily integrated with other tools in the DevOps toolchain.</p><p id="b983dee4-5bd6-49cb-9fe1-58a916592994" class="">
+</p></details></li></ul><ul id="16bf63d0-d232-4edf-a7e8-ca806e7a093f" class="toggle"><li><details open=""><summary>Explain the differences between a freestyle job and a pipeline job in Jenkins.</summary><p id="3c1afb3e-d98f-4694-93fa-9130f88353ef" class="">Freestyle jobs are traditional Jenkins jobs that can be configured using the Jenkins web interface. They are simple to create and configure, and can be used to perform a variety of tasks, such as compiling code, running tests, and deploying applications.</p><p id="89f3b553-5871-432e-adbe-bca2a548511c" class="">Pipeline jobs, on the other hand, are defined using a script called a Jenkinsfile, which is written in a domain-specific language called Groovy. Pipeline jobs allow for greater flexibility and control over the build process, and can be used to create complex workflows that include multiple stages and steps.</p></details></li></ul><ul id="3bed2fa9-654e-4ad3-bada-56e6638789ea" class="toggle"><li><details open=""><summary>What is the Jenkinsfile? Why is it important? Explain its syntax and structure.</summary><p id="94183440-1e15-4ef7-bb4e-1e14f0d0a893" class="">The Jenkinsfile is a script that defines the entire build process for a Jenkins pipeline job. It is written in the Groovy programming language and is stored in the project&#x27;s source code repository. The Jenkinsfile allows for greater control and flexibility over the build process, and enables the creation of complex workflows with multiple stages and steps.</p><p id="203da877-a971-461d-8e36-eccae3af8ae8" class="">The syntax of the Jenkinsfile consists of several predefined keywords, such as pipeline, stage, and steps, which are used to define the various stages and steps of the build process. The structure of the Jenkinsfile typically consists of a series of stages, each of which contains one or more steps.</p></details></li></ul><ul id="a6d17268-32a3-40c5-9aee-749259999cce" class="toggle"><li><details open=""><summary>How would you create a Jenkins job from scratch?</summary><p id="b8c2dc0e-59a5-48ff-a043-c7f253cb502b" class="">To create a Jenkins job from scratch, follow these steps:</p><ol type="1" id="c3701667-fdc2-428a-8cc4-7452103d5416" class="numbered-list" start="1"><li>Open the Jenkins web interface and click on &quot;New Item&quot; to create a new job.</li></ol><ol type="1" id="731bc087-882e-45fb-bd99-e56406f8fc29" class="numbered-list" start="2"><li>Enter a name for the job and select the type of job you want to create (e.g., freestyle or pipeline).</li></ol><ol type="1" id="69ffc589-04e6-491b-9406-7d0e4543dd2f" class="numbered-list" start="3"><li>Configure the job&#x27;s settings, such as the source code repository URL, build triggers, and build steps.</li></ol><ol type="1" id="81854ce1-a002-44c7-a4b1-2f01d12a94ba" class="numbered-list" start="4"><li>Save the job configuration and run the job to verify that it is working correctly.</li></ol><ol type="1" id="fef56746-9426-468d-a674-9f9033bd5cf9" class="numbered-list" start="5"><li>What are Jenkins plugins? Can you provide some examples of plugins that you have used?</li></ol><p id="0aca7cf1-4806-41ec-a652-bc3083776d1f" class="">Jenkins plugins are add-ons that extend the functionality of Jenkins by providing additional features and capabilities. There are thousands of plugins available for Jenkins, covering a wide range of functionality, from source code management and build tools to testing frameworks and deployment automation.</p><p id="1840ceda-3075-4f45-bd12-da1f92865faa" class="">Some examples of plugins that I have used include the Git plugin, which enables Jenkins to interact with Git repositories, the Maven plugin, which provides integration with the Maven build tool, and the Slack Notification plugin, which allows Jenkins to send notifications to a Slack channel.</p></details></li></ul><ul id="227be4da-1c5f-422f-b5f5-b367ba05ef2b" class="toggle"><li><details open=""><summary>What is Jenkins Distributed Builds? How does it work?</summary><p id="f7e709be-9824-49c3-98ba-6666923431cf" class="">Jenkins Distributed Builds is a feature that allows Jenkins to distribute the build process across multiple machines or agents. This can help to speed up the build process and improve performance by parallelizing the build across multiple nodes.</p><p id="c11e3dc8-de03-4f8c-abc3-f74152bb06ca" class="">To use Jenkins Distributed Builds, you must first configure one or more build agents, which are machines that can be used to execute build tasks. Once the agents are configured, you can configure your Jenkins jobs to use them, either by selecting a specific agent to run the job on or by allowing Jenkins to automatically select an available agent based on availability and load.</p></details></li></ul><ul id="25ee0aff-6ed6-499a-8b2e-215411b2fd44" class="toggle"><li><details open=""><summary>What are Jenkins plugins? Can you provide some examples of plugins that you have used?</summary><p id="ed7d1c62-8d43-405c-b5fd-10543dfdb3d2" class="">Jenkins plugins are software modules that extend the functionality of Jenkins. They allow users to add features such as new build steps, integrations with other tools, and reporting capabilities. Some examples of plugins that I have used are the GitHub plugin, the Slack plugin, and the HTML Publisher plugin.</p></details></li></ul><ul id="1c469a7f-3538-443a-8a74-a1bfad40e12d" class="toggle"><li><details open=""><summary>How do you manage security in Jenkins? What are the best practices for securing Jenkins?</summary><p id="8f8aafdb-4dcd-4640-88ab-92d71e112646" class="">To manage security in Jenkins, you can use the Jenkins security settings to configure access controls for users and define permissions for different types of jobs. It is recommended to use secure protocols such as HTTPS and SSH, and to limit access to Jenkins to only authorized users. Other best practices for securing Jenkins include keeping the software up to date, using plugins to enhance security, and regularly backing up configuration files.</p></details></li></ul><ul id="bf19f912-4c3f-4d51-a7ea-e2fb756815b9" class="toggle"><li><details open=""><summary>What is Continuous Integration (CI)? What are the benefits of using CI?</summary><p id="90c5c258-3d09-401f-8011-92ab92fa6ba5" class="">Continuous Integration (CI) is a practice of continuously integrating code changes into a shared repository and verifying the build and tests. The benefits of using CI are:</p><ul id="c7c8101d-c454-4df0-9c38-4daf9103a164" class="bulleted-list"><li style="list-style-type:disc">Early detection of code issues and errors.</li></ul><ul id="a8a71eac-58ce-4e0b-a57f-0dceae14b1b5" class="bulleted-list"><li style="list-style-type:disc">Faster feedback loops for developers.</li></ul><ul id="e1986932-177d-4e00-ba2e-efffca00e53a" class="bulleted-list"><li style="list-style-type:disc">Reduced risk of integration issues.</li></ul><ul id="7dbe0a97-aac0-4b04-94a5-a2a98c4cb0fb" class="bulleted-list"><li style="list-style-type:disc">Increased code quality and stability.</li></ul></details></li></ul><ul id="0c4ee292-3ec9-442c-94e1-435d52b37f05" class="toggle"><li><details open=""><summary>Explain Continuous Delivery (CD) and Continuous Deployment (CD), and how they are different from each other.</summary><p id="cc649934-a3b3-4934-b4cd-b1b9951c1d02" class="">Continuous Delivery (CD) is the practice of automatically deploying code changes to a staging or testing environment for further testing and validation. Continuous Deployment (CD) is the practice of automatically deploying code changes to a production environment. CD requires a higher degree of confidence in the build and test processes than CD.</p></details></li></ul><ul id="8e2779e9-ee72-4369-be02-45198edfc906" class="toggle"><li><details open=""><summary></summary></details></li></ul></details></li></ul><p id="a5ed841e-7308-42d1-8897-24151b14a173" class="">
+</p></details></li></ul><ul id="fa279ae1-af89-4473-9ec9-80cbaaf7034a" class="toggle"><li><details open=""><summary><strong><mark class="highlight-yellow">SonarQube  🔎 </mark></strong></summary></details></li></ul><ul id="55bd4ee6-c9ff-4140-b0de-f2dcd1d64fe1" class="toggle"><li><details open=""><summary><strong><mark class="highlight-blue">Docker 🐬</mark></strong></summary></details></li></ul><ul id="a062b00d-98da-4daf-8f5c-4d9aa344db34" class="toggle"><li><details open=""><summary><strong><mark class="highlight-teal">Kubernetes</mark></strong><strong>  ☸</strong></summary><ul id="287519f4-1712-4266-92ad-6ba467a9e4ba" class="toggle"><li><details open=""><summary><mark class="highlight-gray"><strong>Kubernetes architecture</strong></mark></summary><figure id="4ec68462-3745-4da9-a652-dc9c46c17042" class="image"><a href="DevOps%20Interview%20Questions%204ca7c7971aff4067b67d4f674e4514e5/Untitled.png"><img style="width:2000px" src="DevOps%20Interview%20Questions%204ca7c7971aff4067b67d4f674e4514e5/Untitled.png"/></a></figure><ol type="1" id="403ff6fb-dede-4c43-803e-dabd8b099921" class="numbered-list" start="1"><li>Master Node:
+The master node is responsible for managing and coordinating the cluster. It includes several components such as the Kubernetes API server, etcd data store, kube-scheduler, and kube-controller-manager.</li></ol><ol type="1" id="d240ab83-3535-49c4-bacc-cb4c2bf8c490" class="numbered-list" start="2"><li>Kubernetes API server:
+The API server is the main management interface for the Kubernetes cluster. It is responsible for receiving and processing requests from the kubectl command-line interface and other Kubernetes components, and for storing and retrieving data about the cluster in etcd.</li></ol><ol type="1" id="0be42121-a55e-4bba-a4f0-21fc0939e88c" class="numbered-list" start="3"><li>etcd:
+etcd is a distributed key-value store used by the Kubernetes API server to store and retrieve data about the cluster, such as pod and service configurations, node status, and network information.</li></ol><ol type="1" id="cde2ef0a-7247-4081-a694-34d596271e83" class="numbered-list" start="4"><li>Kube-scheduler:
+The kube-scheduler is responsible for scheduling pods to run on nodes in the cluster based on resource availability and other constraints.</li></ol><ol type="1" id="e008c602-be43-4034-9a95-85ce3b7379a3" class="numbered-list" start="5"><li>Kube-controller-manager:
+The kube-controller-manager is responsible for managing various Kubernetes controllers that monitor and control different aspects of the cluster, such as the replication controller, endpoints controller, and service account and token controllers.</li></ol><ol type="1" id="b3c1274e-77b0-4999-b942-8811f4d69bc2" class="numbered-list" start="6"><li>Worker Node:
+The worker node is where the actual containers run. Each worker node runs a Kubernetes agent called kubelet, which communicates with the API server to receive instructions about which pods to run and how to configure them. The worker node also includes a container runtime, such as Docker or containerd, which is responsible for running the containers themselves.</li></ol><ol type="1" id="d82f9c95-e185-4997-96ed-d12d63e48afc" class="numbered-list" start="7"><li>Kubelet:
+The kubelet is the primary Kubernetes agent that runs on each worker node. It is responsible for communicating with the API server to receive instructions about which pods to run and how to configure them, and for monitoring the health and status of the containers running on the node.</li></ol><ol type="1" id="7c0afd37-7b3b-488a-8cf8-00ac8740a76b" class="numbered-list" start="8"><li>Container runtime:
+The container runtime is responsible for managing the containers themselves, including starting and stopping them, managing their network connections, and allocating system resources such as CPU and memory.</li></ol><ol type="1" id="c2a30883-c103-4e7d-b677-665261606567" class="numbered-list" start="9"><li>Kubernetes Service:
+The Kubernetes service is a logical abstraction that provides a stable IP address and DNS name for a set of pods. Services allow pods to communicate with each other, even if their IP addresses change due to scaling or rescheduling.</li></ol><ol type="1" id="62dbd088-8314-45c4-930c-33706c8c7b3f" class="numbered-list" start="10"><li>Kubernetes Ingress:
+The Kubernetes ingress is a resource that allows external traffic to be routed to services within the cluster. It provides a way to expose multiple services under a single IP address and port, and supports advanced routing and load balancing features.</li></ol><p id="711b9bf0-2402-4e33-b085-42db8ca728f1" class="">
+</p><p id="511c14ee-0a63-4084-9c1d-aae8723f9ea2" class="">
+</p></details></li></ul><ul id="a152caf4-6cc5-43ab-8ba6-5ea7d62343ee" class="toggle"><li><details open=""><summary><mark class="highlight-gray"><strong>Multiple control planes</strong></mark></summary><p id="dbc668a0-7975-4729-8d33-cb2a6fce0f94" class="">Technically, it is possible to have multiple control planes in a Kubernetes cluster, but it is not a common practice and is not recommended for most use cases. The control plane is a critical component of the cluster, responsible for managing and coordinating all the nodes and workloads, so having multiple control planes introduces additional complexity and potential points of failure.</p><p id="05d153d5-cd45-44a9-8c27-5c9286171857" class="">That being said, there are some scenarios where having multiple control planes might make sense. For example, in a large, distributed cluster with many nodes and workloads, having multiple control planes can improve resilience and reduce the risk of a single point of failure. Additionally, having multiple control planes can improve performance by distributing the load of managing the cluster across multiple nodes.</p><p id="bbf60c29-88d1-4d8f-b86a-d612607afeda" class="">However, setting up and managing multiple control planes requires additional configuration and maintenance, and can introduce additional complexity and potential issues. As a result, it is typically only recommended for advanced users or for specific use cases where it has been thoroughly tested and validated.</p></details></li></ul><ul id="69d209a8-6eff-411b-9363-895f768ab326" class="toggle"><li><details open=""><summary><mark class="highlight-gray"><strong>Daemon sets</strong></mark></summary><p id="673264ca-6339-45b3-8f9e-d800300c1ca3" class="">In Kubernetes, a DaemonSet is a type of workload that ensures that all or some nodes in a cluster run a copy of a pod. It is a simple way to deploy a daemon or agent on every node in a cluster, typically used for tasks such as logging, monitoring, or other node-level tasks.</p><p id="4937ce05-dd77-47e0-a288-c8315a974d21" class="">The key feature of a DaemonSet is that it creates one pod for each node in the cluster, and it ensures that each pod is running on a different node. This means that if a new node is added to the cluster, a new pod will be created automatically on that node. Similarly, if a node is removed from the cluster, the pod running on that node will be terminated automatically.</p><p id="e9f61a5c-7b29-464b-b62d-2a7f72d92c82" class="">DaemonSets are useful when you need to run a single instance of an application on each node in the cluster, or when you need to ensure that a certain task is always running on every node in the cluster. For example, you might use a DaemonSet to deploy a logging agent to collect logs from every node in the cluster.</p><p id="59efacbb-046f-435d-9d36-0a706655c9fa" class="">Some of the key use cases for DaemonSets in Kubernetes include:</p><ol type="1" id="3a2d474c-b462-4814-b2c9-a476cb404674" class="numbered-list" start="1"><li>Logging and monitoring - collecting logs or metrics from every node in the cluster.</li></ol><ol type="1" id="d8cdd89c-535c-4fa4-82fb-5a45f5c525ae" class="numbered-list" start="2"><li>Network plugins - deploying network plugins to handle network communication between pods and nodes.</li></ol><ol type="1" id="456e556c-ddb9-4d64-8ada-6d0b8e51233f" class="numbered-list" start="3"><li>Security agents - deploying security agents to every node in the cluster to ensure compliance with security policies.</li></ol><ol type="1" id="d4f15c4b-4588-40c4-967b-fa0ca66ee42f" class="numbered-list" start="4"><li>Node-level storage - deploying node-level storage solutions to provide local storage for pods running on each node.</li></ol><ol type="1" id="fd06d658-5686-460d-b6dd-d1a888edc31b" class="numbered-list" start="5"><li>Resource management - deploying resource management agents to manage CPU and memory usage on each node.</li></ol><p id="a2d6e071-3b84-4c71-927b-3680b15a3b59" class="">Overall, DaemonSets provide a simple way to ensure that a specific pod is always running on every node in a Kubernetes cluster, making them a powerful tool for managing node-level tasks and resources.</p></details></li></ul><ul id="b3459523-b39b-41d8-89c8-6d5b713a2287" class="toggle"><li><details open=""><summary><mark class="highlight-gray"><strong>Stateful and stateless</strong></mark></summary><p id="ef790f84-8d9a-49be-8d2d-5c0076377e04" class="">Stateful workloads maintain state or data that persists across restarts, whereas stateless workloads do not. Stateful workloads are typically used for applications that require persistent data storage, such as databases or file systems, whereas stateless workloads are used for applications that do not require persistent storage, such as web servers or proxies.</p><p id="6167f32e-e08d-477c-83d6-d2cfe761fed4" class="">Stateful workloads in Kubernetes are typically deployed using a StatefulSet, which is a controller that manages the deployment and scaling of stateful applications. StatefulSets ensure that each pod in the deployment has a unique and stable identity, which is important for stateful applications that require persistent storage. This is achieved through the use of a stable network identity for each pod, as well as a unique hostname and persistent storage volume.</p><p id="1e1f5775-9372-4e8c-b69b-a3f91c13ced9" class="">Stateless workloads in Kubernetes are typically deployed using a Deployment or ReplicaSet, which are controllers that manage the deployment and scaling of stateless applications. Stateless applications do not require persistent storage or a unique identity, as they are designed to be easily scalable and highly available. Instead, they rely on external storage solutions, such as a database or object store, to persist data.</p><p id="f68a8eeb-beee-4ff1-a251-cfe2841aec3b" class="">Some key differences between stateful and stateless workloads in Kubernetes include:</p><ol type="1" id="654cdb79-0b97-48e7-b38a-26e994e54d76" class="numbered-list" start="1"><li>Data persistence: Stateful workloads require persistent data storage, whereas stateless workloads do not.</li></ol><ol type="1" id="006720ac-adf3-4bf2-b24d-bd0320a81832" class="numbered-list" start="2"><li>Identity: Stateful workloads require a unique and stable identity for each pod, whereas stateless workloads do not.</li></ol><ol type="1" id="805baa94-e089-425c-b4e2-eab5c3f1269e" class="numbered-list" start="3"><li>Scaling: Stateless workloads are designed to be easily scalable, whereas stateful workloads require careful scaling to ensure that data is not lost or corrupted.</li></ol><ol type="1" id="ae21724b-0de6-4495-a31d-abd635c9e5c7" class="numbered-list" start="4"><li>Deployment: Stateful workloads are typically deployed using a StatefulSet, whereas stateless workloads are typically deployed using a Deployment or ReplicaSet.</li></ol><p id="799faaf1-c387-492e-a246-94dfda4a5775" class="">Overall, both stateful and stateless workloads have their own use cases and advantages, and the choice between them depends on the specific requirements of your application.</p></details></li></ul><ul id="d90a799a-8429-498d-9a40-ee30e531a74e" class="toggle"><li><details open=""><summary><mark class="highlight-gray"><strong>Node affinity and Pod Distribution</strong></mark></summary><p id="8d16fa2b-5376-4818-905f-d54d2e275e7e" class="">Node affinity is a feature that allows you to schedule pods on specific nodes in a cluster based on node attributes such as labels, annotations, and node taints. Node affinity can be used to ensure that certain pods are scheduled on specific nodes that meet certain criteria, such as nodes with specific hardware capabilities, network proximity, or other characteristics. Node affinity can be defined using nodeSelector or preferredDuringSchedulingIgnoredDuringExecution fields in a Pod&#x27;s specification.</p><p id="419d2309-3020-461f-8f81-499490248916" class="">Pod Distribution Budget (PDB) is another feature that allows you to control the number of pods that can be scheduled on specific nodes or in specific zones in a cluster. PDBs are used to enforce resource usage limits, such as CPU and memory, and to ensure that pods are distributed across the cluster in a way that maximizes availability and performance. PDBs can be defined using the maxUnavailable and minAvailable fields in a Pod&#x27;s specification.</p><p id="029f8ce2-4e89-4c47-813e-be05aacbaf4e" class="">In summary, Node affinity and Pod Distribution Budget are both important concepts in Kubernetes that are used to control the placement and distribution of pods on specific nodes or in specific zones in a cluster. Node affinity is used to schedule pods on specific nodes based on node attributes, while Pod Distribution Budget is used to control the number of pods that can be scheduled on specific nodes or in specific zones in a cluster based on resource usage limits. Both concepts are critical to ensuring optimal performance, availability, and scalability of Kubernetes applications.</p></details></li></ul><ul id="349fb925-2b46-4b8a-ab4e-75e6f71b7b2f" class="toggle"><li><details open=""><summary><mark class="highlight-gray"><strong>schedule pods on the master node</strong></mark></summary><p id="ade317fc-f772-4457-9af3-eb3f211e5709" class="">In Kubernetes, it is generally not recommended to schedule pods on the master node because it can affect the stability and security of the cluster. The master node is responsible for managing and coordinating the cluster, including scheduling and monitoring workloads, and running pods on the master node can potentially cause resource contention and degrade the performance of the cluster.</p><p id="862af95f-5125-4ad9-ab8f-fa1fcba82713" class="">That being said, there are certain scenarios where it might make sense to run workloads on the master node, such as for certain administrative tasks or when running a small test cluster.</p><p id="9000a341-f7f0-4eab-848c-bbc2b625b761" class="">In Kubernetes, the master and slave nodes are referred to as control plane and worker nodes, respectively. The control plane consists of components that manage and coordinate the cluster, including the API server, etcd datastore, scheduler, and controller manager. The worker nodes, on the other hand, are responsible for running the workloads and executing the tasks assigned to them by the control plane. This includes running pods, containers, and other components of the workload.</p><p id="50e78eec-b89c-43eb-946e-15eb4b3e821a" class="">The separation of control plane and worker nodes is important for several reasons. First, it allows for better resource utilization and scalability, as worker nodes can be added or removed as needed to handle changes in workload demand. Second, it enhances the security and stability of the cluster by isolating the critical control plane components from the running workloads. Finally, it simplifies management and maintenance of the cluster, as each node type has a distinct set of responsibilities and can be managed independently.</p></details></li></ul><p id="67cc5027-d8dc-4d81-a5f6-15df47050fc3" class="">
+</p></details></li></ul><ul id="09f8bb9a-ebab-43a2-ab4c-4ee08c26a2c7" class="toggle"><li><details open=""><summary><strong>Grafana</strong><strong><mark class="highlight-gray">, Prometheus  Ⓜ</mark></strong></summary></details></li></ul><ul id="3e404a42-1e0e-4030-928a-0e9850799ee4" class="toggle"><li><details open=""><summary><strong><mark class="highlight-blue">Terraform ℹ</mark></strong></summary></details></li></ul><ul id="57fbba7f-4fac-4557-80c3-256ba5901a7f" class="toggle"><li><details open=""><summary><strong><mark class="highlight-orange">Jira 🎟</mark></strong></summary></details></li></ul><ul id="3b07a1f4-890a-4345-95cc-6888cdc80ded" class="toggle"><li><details open=""><summary></summary></details></li></ul></div></article></body></html>
